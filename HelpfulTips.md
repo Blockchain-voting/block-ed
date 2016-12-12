@@ -1,5 +1,5 @@
 ## Postgres Updating
-https://keita.blog/2016/01/09/homebrew-and-postgresql-9-5/
+https://keita.blog/2016/01/09/homebrew-and-postgresql-9-
 
 #### My version of this lovely blog
 
@@ -23,3 +23,7 @@ brew services start postgresql
 
 gem uninstall pg
 gem install pg
+
+## Digital Ocean
+
+ssh root@104.131.69.109

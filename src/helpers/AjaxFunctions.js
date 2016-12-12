@@ -2,9 +2,9 @@
 export default class AjaxFunctions {
   static mapElections(eData) {
     const elections = Object.keys(eData)
-    .map((eId) => (
-      eData[eId]
-    ))
+      .map((eId) => (
+        eData[eId]
+      ))
     console.log('in mapElections', elections);
     return elections
   }
