@@ -1,0 +1,14 @@
+hr{
+  border-width: 10px;
+  border-style: outset;
+  border-color: firebrick;
+}
+.election{
+  margin: 2px 0 5px 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+.new-election {
+  width: 200px;
+}
