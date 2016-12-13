@@ -11,7 +11,7 @@ heroku git:remote -a <app name>
 ```
 
 - On heroku go to 'Resources' tab in your app. In the 'Quickly add add-ons...' bar type `Heroku Postgres` and add it to your resources
-  - if you aren't using postgres then don't bother with this and/or type whatever other resources you are using
+  - if you aren't using postgres then don't bother with this and/or type whatever other resources you are using (i.e. MongoDB)
   - Make sure in your `dbConnect.js`, or however you connect to your database, you have `process.env.DATABASE_URL` as part of the database connection promise.
 
 ```
