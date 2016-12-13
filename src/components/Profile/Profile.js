@@ -13,6 +13,7 @@ export default class Profile extends Component {
         id: 0,
         options: ['yes','no']
       },
+      optionStr: '',
       elections: [],
       vote: {
         election: 0,
@@ -32,21 +33,37 @@ export default class Profile extends Component {
       .catch(err => console.log(err))
   }
 
+  handleOptionUpdate(e) {
+    this.setState({
+      optionStr: e.target.value
+    })
+  }
+
   handleElectionUpdate(e) {
     this.setState({
       election: {
         name: e.target.value,
         id: this.state.elections.length + 1,
-        options: ['a','b']
+        options: []
       }
     })
   }
 
+  parseOptionStr() {
+    return this.state.optionStr.split(',');
+  }
+
   electFetch() {
-    AjaxFunctions.pyPostElect(this.state.election)
+    let newElection = {
+      name: this.state.election.name,
+      id: this.state.election.id,
+      options: this.parseOptionStr()
+    }
+
+    AjaxFunctions.pyPostElect(newElection)
       .then(() => {
         let elections = this.state.elections;
-        elections.push(this.state.election);
+        elections.push(newElection);
         this.setState({
           elections
         });
@@ -61,12 +78,17 @@ export default class Profile extends Component {
         <hr/>
         <div className="election">
           <div className="new-elections">
-            <h4>New Election</h4>
+            <h4>Create a new election</h4>
             <br/>
             <input
               type="search"
               placeholder="name"
               onChange={(e) => this.handleElectionUpdate(e)}
+            />
+            <input
+              type="search"
+              placeholder="options"
+              onChange={(e) => this.handleOptionUpdate(e)}
             />
           </div>
           <Election

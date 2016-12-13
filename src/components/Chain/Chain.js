@@ -10,8 +10,8 @@ export default class Chain extends Component {
     this.state={
       vote: {
         election: 0,
-        options: 1,
-        user_signature: 'thisisasignedmessage'
+        options: 0,
+        user_signature: ''
       },
       eData: {
         active: [],
@@ -33,11 +33,11 @@ export default class Chain extends Component {
         options: []
       }
     })
-    this.fetchElectionData()
+    this.fetchElectionData(this.props.params.id)
   }
 
-  fetchElectionData() {
-    AjaxFunctions.getElectionData(this.state.eData.id)
+  fetchElectionData(elId) {
+    AjaxFunctions.getElectionData(elId)
       .then(data => {
         console.log(data);
         this.setState({
@@ -71,18 +71,33 @@ export default class Chain extends Component {
     const blockCards = this.state.eData.chain.map((votes, ind) => (
       <Block
         key={ind}
+        blockId={ind + 1}
         hashes={votes}
       />
+    ))
+    const options = this.state.eData.options.map((choice, ind) => (
+      <div
+        onClick={() => this.handleVoteFetch()}
+        key={ind}
+        className="vote-button"
+      >
+        {`${ind} '${choice}'`}
+      </div>
     ))
     return (
       <div className="blockchain">
         <h4>Blockchain Page</h4>
         <div className="choice-bar">
           <h5>Vote Options</h5>
-          <button onClick={() => this.handleVoteFetch()}>Vote</button>
+          {options}
+          {/* <button onClick={() => this.handleVoteFetch()}>Vote</button> */}
         </div>
         <div className="block-container">
           {blockCards}
+          <Block
+            blockId={'active'}
+            hashes={this.state.eData.active}
+          />
         </div>
       </div>
     );

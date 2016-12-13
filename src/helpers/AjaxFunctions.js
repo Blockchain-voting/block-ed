@@ -1,5 +1,6 @@
 
 export default class AjaxFunctions {
+
   static mapElections(eData) {
     const elections = Object.keys(eData)
       .map((eId) => (
@@ -37,7 +38,7 @@ export default class AjaxFunctions {
   }
 
   static pyVote(vote) {
-    return fetch('http://localhost:5000/vote', {
+    return fetch('http://104.131.69.109:5000/vote', {
       headers: {
         'Content-Type':'application/json'
       },
@@ -49,7 +50,7 @@ export default class AjaxFunctions {
   }
 
   static pyGetElect() {
-    return fetch('http://localhost:5000/elections', {
+    return fetch('http://104.131.69.109:5000/elections', {
       method: 'GET',
       mode: 'cors',
       dataType:'json'
@@ -59,7 +60,7 @@ export default class AjaxFunctions {
   }
 
   static pyPostElect(elect) {
-    return fetch('http://localhost:5000/elections', {
+    return fetch('http://104.131.69.109:5000/elections', {
       headers: {
         'Content-Type':'application/json'
       },
@@ -72,8 +73,7 @@ export default class AjaxFunctions {
   }
 
   static getElectionData(id) {
-    console.log('getting Election Data');
-    return fetch(`http://localhost:5000/elections/${id}`, {
+    return fetch(`http://104.131.69.109:5000/elections/${id}`, {
       method: 'GET',
       mode: 'cors',
       dataType: 'json'

@@ -11,17 +11,13 @@ export default class Block extends Component {
     }
   }
 
-  componentDidMount(){
-    console.log(this.props.hashes);
-  }
-
   render() {
     const hashes = this.props.hashes.map((hashVal, ind) => (
-      <div key={`ind${ind}`}>{hashVal}</div>
+      <div key={ind}>{hashVal}</div>
     ))
     return (
       <div className="block-card">
-        title of block
+        {this.props.blockId}
         {hashes}
       </div>
     );
