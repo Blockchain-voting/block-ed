@@ -1,6 +1,6 @@
 # Heroku
 
-## THIS IS ASSUMING THAT YOU ARE USING BOBBY'S/JASON'S TEMPLATE
+### THIS IS ASSUMING THAT YOU ARE USING BOBBY'S/JASON'S TEMPLATE
 
 - On heroku create the app
 
@@ -56,7 +56,8 @@ const config = process.env.DATABASE_URL || {
 - Type:
   `heroku open`
 
-## Postgres Update
+# Postgres Update
+
 https://keita.blog/2016/01/09/homebrew-and-postgresql-9-
 
 #### My version of this lovely blog
@@ -85,7 +86,3 @@ pg_upgrade \
 gem uninstall pg
 gem install pg
 ```
-
-## Digital Ocean
-
-`ssh root@104.131.69.109`
