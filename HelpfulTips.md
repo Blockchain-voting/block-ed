@@ -14,9 +14,25 @@ heroku git:remote -a <app name>
   - if you aren't using postgres then don't bother with this and/or type whatever other resources you are using
   - Make sure in your `dbConnect.js`, or however you connect to your database, you have `process.env.DATABASE_URL` as part of the database connection promise.
 
+```
+const config = process.env.DATABASE_URL || {
+  host:       process.env.DB_HOST,
+  port:       process.env.DB_PORT,
+  database:   process.env.DB_NAME,
+  user:       process.env.DB_USER,
+  password:   process.env.DB_PASS,
+};
+```
+
 - On heroku go to the `Setting` tab in your app. Click `Reveal Config Vars` and enter the necessary things from your .env
   - NOTE: Do not include any of your DB things, b/c that is handled by heroku when you added `Heroku Postgres`.
   - NOTE: Put a Var for `NODE_ENV` and set it equal to `production`. This tells the package.json, and the express server if you have it configured a certain way, to run in production.
+
+- After connecting postgres to your heroku. Run this command in your terminal
+`heroku pg:psql --app <app name> < db/schema.sql`
+  - where db/schema.sql is whatever file you have to establish your tables in psql.
+  - if you have a seeds file you would have to execute a command for those files as well.
+`heroku pg:psql --app <app name> < db/seeds.sql`
 
 - Make sure in your package.json your scripts section looks like :
 ```
