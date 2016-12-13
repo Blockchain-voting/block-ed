@@ -86,3 +86,7 @@ pg_upgrade \
 gem uninstall pg
 gem install pg
 ```
+
+## Digital Ocean
+
+`ssh root@104.131.69.109`

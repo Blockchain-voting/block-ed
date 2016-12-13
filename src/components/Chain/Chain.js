@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import AjaxFunctions from '../../helpers/AjaxFunctions';
+import Block from '../Block/Block';
 import './Chain.css';
 
 export default class Chain extends Component {
@@ -7,25 +8,48 @@ export default class Chain extends Component {
     super();
 
     this.state={
-      electionId: 0,
       vote: {
         election: 0,
         options: 1,
         user_signature: 'thisisasignedmessage'
+      },
+      eData: {
+        active: [],
+        chain: [],
+        id: 0,
+        name: '',
+        options: []
       }
     }
   }
 
   componentDidMount() {
     this.setState({
-      electionId: this.props.params.id
+      eData:{
+        active: [],
+        chain: [],
+        id: this.props.params.id,
+        name: '',
+        options: []
+      }
     })
     this.fetchElectionData()
   }
 
   fetchElectionData() {
-    AjaxFunctions.getElectionData(this.state.electionId)
-      .then(data => console.log(data))
+    AjaxFunctions.getElectionData(this.state.eData.id)
+      .then(data => {
+        console.log(data);
+        this.setState({
+          eData: {
+            active: data.active,
+            chain: data.chain,
+            id: data.id,
+            name: data.name,
+            options: data.options
+          }
+        })
+      })
       .catch(err => console.log(err))
   }
 
@@ -44,12 +68,21 @@ export default class Chain extends Component {
   }
 
   render() {
+    const blockCards = this.state.eData.chain.map((votes, ind) => (
+      <Block
+        key={ind}
+        hashes={votes}
+      />
+    ))
     return (
       <div className="blockchain">
         <h4>Blockchain Page</h4>
-        <div>
+        <div className="choice-bar">
           <h5>Vote Options</h5>
           <button onClick={() => this.handleVoteFetch()}>Vote</button>
+        </div>
+        <div className="block-container">
+          {blockCards}
         </div>
       </div>
     );
