@@ -45,6 +45,10 @@ const config = process.env.DATABASE_URL || {
   },
   ```
 
+- Make sure in your express server that you have a line that looks like this
+`const PORT        = process.argv[2] || process.env.PORT || 3000;`
+  - especially check that the `process.env.PORT` is uppercase b/c one of the templates we were given had `process.env.port` which will break your deployment
+
 - In Terminal enter:
 `git push heroku master`
  if all goes according to plan you should be done.
