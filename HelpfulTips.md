@@ -89,4 +89,43 @@ gem install pg
 
 ## Digital Ocean
 
+Connect to server
 `ssh root@104.131.69.109`
+
+b/c everyone needs a reminder
+`whoami`
+
+Generate new ssh key to link with github
+```
+ssh-keygen
+vi ~/.ssh/id_rsa.pub
+```
+  - go to github and put the new ssh key in settings
+
+Clone the repo to server
+`git clone git@github.com:Blockchain-voting/votechain.git`
+
+Install requirements
+`pip install flask flask-cors`
+
+Nginx installation to format server (don't understand this fully)
+```
+sudo add-apt-repository ppa:nginx/stable
+sudo apt-get update && sudo apt-get upgrade
+sudo apt-get install nginx
+sudo /etc/init.d/nginx start
+```
+
+Blog explaining it
+http://vladikk.com/2013/09/12/serving-flask-with-nginx-on-ubuntu/
+
+Commands from blog that setup python files to be effected by Nginx
+```
+sudo chown -R root:root ../var/www/votechain/
+sudo apt-get install python-virtualenv
+cd ../var/www/votechain/
+virtualenv venv
+pip freeze
+```
+
+Up and running
