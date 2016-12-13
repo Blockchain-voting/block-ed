@@ -59,7 +59,6 @@ export default class AjaxFunctions {
   }
 
   static pyPostElect(elect) {
-    console.log('posting election');
     return fetch('http://localhost:5000/elections', {
       headers: {
         'Content-Type':'application/json'
@@ -70,5 +69,15 @@ export default class AjaxFunctions {
     })
     .then(r => r.json())
     // .then(eData => mapElections(eData))
+  }
+
+  static getElectionData(id) {
+    console.log('getting Election Data');
+    return fetch(`http://localhost:5000/elections/${id}`, {
+      method: 'GET',
+      mode: 'cors',
+      dataType: 'json'
+    })
+    .then(r => r.json())
   }
 }

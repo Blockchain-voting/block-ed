@@ -8,7 +8,7 @@ export default class ElectionItem extends Component {
     return (
       <div className="election-card">
         <h6>{this.props.name}</h6>
-        <button onClick={(id) => this.props.handleVoteClick(this.props.id)}>Vote</button>
+        <button onClick={(id) => this.props.handleVoteClick(this.props.id)}>Check Out</button>
       </div>
     );
   }

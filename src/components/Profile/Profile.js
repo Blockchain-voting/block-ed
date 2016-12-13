@@ -42,18 +42,6 @@ export default class Profile extends Component {
     })
   }
 
-  voteFetch() {
-    let vote = {
-      election: this.state.vote.election,
-      options: this.state.vote.options,
-      userPublicKey: this.props.appState.user.publicKey
-    }
-
-    AjaxFunctions.pyVote(vote)
-      .then(r => console.log(r))
-      .catch(err => console.log(err))
-  }
-
   electFetch() {
     AjaxFunctions.pyPostElect(this.state.election)
       .then(() => {
@@ -86,7 +74,6 @@ export default class Profile extends Component {
             handleVoteClick={(id) => this.props.handleVoteClick(id)}
           />
         </div>
-        <button onClick={() => this.voteFetch()}>Vote</button>
         <button onClick={() => this.electFetch()}>Create Election</button>
       </div>
     );

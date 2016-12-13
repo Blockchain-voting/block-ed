@@ -13,7 +13,7 @@ ReactDOM.render((
       <Route path="/" component={App}>
         <IndexRoute component={Login}/>
         <Route path="/profile" component={Profile} />
-        <Route path="/blockchain" component={Chain} />
+        <Route path="/blockchain/:id" component={Chain} />
       </Route>
     </Router>
   ), document.querySelector('#root-container'));

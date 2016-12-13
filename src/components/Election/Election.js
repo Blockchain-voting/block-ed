@@ -4,17 +4,17 @@ import ElectionItem from '../ElectionItem/ElectionItem';
 import './Election.css';
 
 export default class Election extends Component {
-  constructor(){
-    super();
-
-    this.state={
-      vote: {
-        election: 0,
-        options: 1,
-        user_signature: 'thisisasignedmessage'
-      }
-    }
-  }
+  // constructor(){
+  //   super();
+  //
+  //   this.state={
+  //     vote: {
+  //       election: 0,
+  //       options: 1,
+  //       user_signature: 'thisisasignedmessage'
+  //     }
+  //   }
+  // }
 
   render() {
     const elections = this.props.elections.map((election, ind) => (

@@ -31,7 +31,7 @@ export default class App extends Component {
 
   handleVoteClick(id) {
     console.log('Showing blockchain for election', id);
-    browserHistory.push('/blockchain')
+    browserHistory.push(`/blockchain/${id}`)
   }
 
   render() {
