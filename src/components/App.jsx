@@ -17,17 +17,6 @@ export default class App extends Component {
     }
   }
 
-  componentDidMount(){
-    fetch('http://localhost:5000/hello', {
-      method: 'GET',
-      mode: 'cors',
-      dataType:'json'
-    })
-    .then(r => r.json())
-    .then(resp => console.log(resp))
-    .catch(err => console.log(err))
-  }
-
   updateUserState(user) {
     this.setState({
       user: {
@@ -37,8 +26,12 @@ export default class App extends Component {
         publicKey: user.public_key,
       }
     })
-    console.log('pushing to profile page');
     browserHistory.push('/profile');
+  }
+
+  handleVoteClick(id) {
+    console.log('Showing blockchain for election', id);
+    browserHistory.push('/blockchain')
   }
 
   render() {
@@ -48,7 +41,8 @@ export default class App extends Component {
 
         {this.props.children && React.cloneElement(this.props.children, {
           appState: this.state,
-          updateUserState: this.updateUserState.bind(this)
+          updateUserState: this.updateUserState.bind(this),
+          handleVoteClick: this.handleVoteClick.bind(this)
         })}
 
       </div>

@@ -28,7 +28,6 @@ export default class Profile extends Component {
         this.setState({
           elections: AjaxFunctions.mapElections(e_data)
         })
-        console.log('Profile state:', this.state.elections);
       })
       .catch(err => console.log(err))
   }
@@ -63,7 +62,6 @@ export default class Profile extends Component {
         this.setState({
           elections
         });
-        console.log('Election Post', election)
       })
       .catch(err => console.log(err))
   }
@@ -85,6 +83,7 @@ export default class Profile extends Component {
           </div>
           <Election
             elections={this.state.elections}
+            handleVoteClick={(id) => this.props.handleVoteClick(id)}
           />
         </div>
         <button onClick={() => this.voteFetch()}>Vote</button>

@@ -36,15 +36,17 @@ export default class Login extends Component {
   handleLogin(){
     let username = this.state.login.username;
     let password = this.state.login.password;
-    console.log(username,password);
+    // console.log(username,password);
 
     AjaxFunctions.login(username,password)
       .then((user) => {
-        if (user.password !== 'false') {
+        // console.log('login:', user.password);
+        if (user.password != 'false') {
           // fire props function to change user state
+          // console.log('logging in');
           this.props.updateUserState(user)
         } else {
-          console.log(user);
+          console.log('bad login');
         }
       })
       .catch(err => console.log(err))

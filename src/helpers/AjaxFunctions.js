@@ -5,7 +5,6 @@ export default class AjaxFunctions {
       .map((eId) => (
         eData[eId]
       ))
-    console.log('in mapElections', elections);
     return elections
   }
 
@@ -50,7 +49,6 @@ export default class AjaxFunctions {
   }
 
   static pyGetElect() {
-    console.log('fetching elections');
     return fetch('http://localhost:5000/elections', {
       method: 'GET',
       mode: 'cors',
