@@ -1,4 +1,39 @@
-h1 {
-  font-size: 36px;
-  margin: 0 2px;
+body {
+  background-image: linear-gradient(#FAFAFA, #DEDEDE);
+  color: #222;
+  margin: 0;
+  height: 100vh;
+}
+.navbar {
+  background-color: rgba(7,7,104,.8);
+  color: #EAEAEA;
+  height: 50px;
+  width: 100vw;
+  padding: 20px;
+  border-radius: 0 0 .2rem .2rem;
+  box-shadow: 0px 1px 5px 0px #111;
+}
+.navbar button{
+  color: #EAEAEA;
+  font-size: 16px;
+  font-weight: bolder;
+
+  position: relative;
+  border-radius: .1rem;
+  border-style: none;
+  background-color: rgba(7,7,104,.9);
+
+  padding: 10px;
+  left: 88vw;
+  top: -12vh;
+  box-shadow: 0px 1px 5px 0px #111;
+}
+.navbar button:hover{
+  box-shadow: 0px 1px 5px 2px #111;
+}
+.navbar h1{
+  color: #EAEAEA;
+  position: relative;
+  top: -5vh;
+  left: 1vw;
 }

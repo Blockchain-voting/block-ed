@@ -74,8 +74,9 @@ export default class Profile extends Component {
   render() {
     return (
       <div>
-        <h4>Welcome, {this.props.appState.user.username}</h4>
-        <hr/>
+        <div className="welcome-card">
+          <h2>Welcome, {this.props.appState.user.username}</h2>
+        </div>
         <div className="election">
           <div className="new-elections">
             <h4>Create a new election</h4>
@@ -90,13 +91,13 @@ export default class Profile extends Component {
               placeholder="options"
               onChange={(e) => this.handleOptionUpdate(e)}
             />
+            <button onClick={() => this.electFetch()}>Create Election</button>
           </div>
           <Election
             elections={this.state.elections}
             handleVoteClick={(id) => this.props.handleVoteClick(id)}
           />
         </div>
-        <button onClick={() => this.electFetch()}>Create Election</button>
       </div>
     );
   }

@@ -1,14 +1,15 @@
-hr{
-  border-width: 10px;
-  border-style: outset;
-  border-color: firebrick;
-}
 .election{
   margin: 2px 0 5px 10px;
+  padding: 5px;
   display: flex;
   justify-content: space-around;
 }
-
-.new-election {
-  width: 200px;
+.welcome-card{
+  margin: 0 10px;
+  font-size: 24px;
 }
+/*.new-election {
+  background-color: forestgreen;
+  width: 200px;
+  height: 300px;
+}*/

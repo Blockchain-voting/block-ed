@@ -54,7 +54,7 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
+      <div className="landing-container">
         <div className="login">
           <h4>Log in</h4>
           <input
@@ -68,6 +68,11 @@ export default class Login extends Component {
             onChange={(e) => this.handlePasswordUpdate(e, 'log')}
           />
           <button onClick={() => this.handleLogin()}>Login</button>
+        </div>
+        <div className="blurb">
+          <p>
+            This is a demo site to demonstrate the strengths of the blockchain. While the blockchain is a very secure system, THIS SITE IS NOT. Please use a simple password to login, as the user profile is still in development and not fully secure.
+          </p>
         </div>
       </div>
     );
