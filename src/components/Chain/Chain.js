@@ -91,6 +91,7 @@ export default class Chain extends Component {
         key={ind}
         blockId={ind + 1}
         hashes={votes}
+        choices={this.state.eData.options}
       />
     ))
     const options = this.state.eData.options.map((choice, ind) => (
@@ -104,7 +105,8 @@ export default class Chain extends Component {
     ))
     return (
       <div className="blockchain">
-        <h4>Blockchain Page</h4>
+        <h2>{this.state.eData.name}</h2>
+        <h4>Election Page</h4>
         <div className="choice-bar">
           <h5>Vote Options</h5>
           {options}
@@ -115,6 +117,7 @@ export default class Chain extends Component {
           <Block
             blockId={'active'}
             hashes={this.state.eData.active}
+            choices={this.state.eData.options}
           />
         </div>
       </div>

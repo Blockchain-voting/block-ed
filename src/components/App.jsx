@@ -26,7 +26,7 @@ export default class App extends Component {
         publicKey: user.public_key,
       }
     })
-    browserHistory.push('/profile');
+    this.redirectToProfilePage()
   }
 
   redirectToProfilePage() {
