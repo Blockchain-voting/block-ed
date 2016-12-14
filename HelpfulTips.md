@@ -45,6 +45,10 @@ const config = process.env.DATABASE_URL || {
   },
   ```
 
+- Make sure all your react and babel dependencies are only in devdependencies
+  - `npm uninstall --save react`
+  - `npm i --save-dev react`
+
 - Make sure in your express server that you have a line that looks like this
 `const PORT        = process.argv[2] || process.env.PORT || 3000;`
   - especially check that the `process.env.PORT` is uppercase b/c one of the templates we were given had `process.env.port` which will break your deployment
@@ -89,6 +93,10 @@ gem install pg
 
 ## Digital Ocean
 
+Create droplet on Digital Ocean
+
+
+
 Connect to server
 `ssh root@104.131.69.109`
 
@@ -129,3 +137,34 @@ pip freeze
 ```
 
 Up and running
+
+to restart or debug
+`python ../var/www/votechain/server.py`
+
+Install tmux
+`sudo apt-get install tmux`
+
+Launch tmux
+`tmux`
+
+launch server the usual way
+
+See all tmux session
+`tmux ls`
+
+Launch tmux with session name
+`tmux new -s block-flask`
+
+Kill a tmux session by name
+`tmux kill-session -t block-flask`
+
+Connect to tmux session by name
+`tmux a -t block-flask`
+
+Exit tmux
+`ctrl+b`
+`d`
+
+Pulling from Git
+`cd ../var/www/votechain`
+  - then regular git commands

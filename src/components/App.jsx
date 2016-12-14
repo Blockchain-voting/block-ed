@@ -29,6 +29,10 @@ export default class App extends Component {
     browserHistory.push('/profile');
   }
 
+  redirectToProfilePage() {
+    browserHistory.push('/profile');
+  }
+
   handleVoteClick(id) {
     console.log('Showing blockchain for election', id);
     browserHistory.push(`/blockchain/${id}`)
@@ -37,7 +41,18 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <h1>Welcome to Block -Ed</h1>
+        <div className="navbar">
+          <h1
+            onClick={() => this.redirectToProfilePage()}
+          >
+            Block -Ed
+          </h1>
+          <button
+            onClick={() => this.logout()}
+          >
+            Logout
+          </button>
+        </div>
 
         {this.props.children && React.cloneElement(this.props.children, {
           appState: this.state,

@@ -31,6 +31,11 @@ export default class Chain extends Component {
         id: this.props.params.id,
         name: '',
         options: []
+      },
+      vote: {
+        election: this.props.params.id,
+        options: 0,
+        user_signature: ''
       }
     })
     this.fetchElectionData(this.props.params.id)
@@ -53,12 +58,25 @@ export default class Chain extends Component {
       .catch(err => console.log(err))
   }
 
+  handleVoteChange(id) {
+    console.log(id);
+    this.setState({
+      vote: {
+        election: this.state.vote.election,
+        options: id,
+        user_signature: ''
+      }
+    })
+  }
+
   handleVoteFetch() {
     let vote = {
       election: this.state.vote.election,
       options: this.state.vote.options,
       userPublicKey: this.props.appState.user.publicKey
     }
+
+    console.log(vote);
 
     AjaxFunctions.pyVote(vote)
       .then(r => {
@@ -76,13 +94,13 @@ export default class Chain extends Component {
       />
     ))
     const options = this.state.eData.options.map((choice, ind) => (
-      <div
-        onClick={() => this.handleVoteFetch()}
+      <button
+        onClick={(id) => this.handleVoteChange(ind)}
         key={ind}
         className="vote-button"
       >
         {`${ind} '${choice}'`}
-      </div>
+      </button>
     ))
     return (
       <div className="blockchain">
@@ -90,7 +108,7 @@ export default class Chain extends Component {
         <div className="choice-bar">
           <h5>Vote Options</h5>
           {options}
-          {/* <button onClick={() => this.handleVoteFetch()}>Vote</button> */}
+          <button onClick={() => this.handleVoteFetch()}>Vote</button>
         </div>
         <div className="block-container">
           {blockCards}
