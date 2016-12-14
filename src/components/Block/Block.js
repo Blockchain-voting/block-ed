@@ -16,17 +16,15 @@ export default class Block extends Component {
       <div
         key={ind}
       >
-        <h4>
-          Value: {this.props.choices[hashVal[1]]}
-        </h4>
-        <h5>
-          Hash: {hashVal[0]},
-        </h5>
+        <p>
+          <span> Value: {this.props.choices[hashVal[1]]} <br/>Hash:</span>
+          {hashVal[0]}
+        </p>
       </div>
     ))
     return (
       <div className="block-card">
-        {this.props.blockId}
+        {`Block: ${this.props.blockId}`}
         {hashes}
       </div>
     );

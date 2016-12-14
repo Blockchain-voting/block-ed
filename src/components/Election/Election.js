@@ -26,9 +26,11 @@ export default class Election extends Component {
       />
     ));
     return (
-      <div className="election-card">
+      <div>
         <h4>Elections</h4>
-        {elections}
+        <div className="election-container">
+          {elections}
+        </div>
       </div>
     );
   }

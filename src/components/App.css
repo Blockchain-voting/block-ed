@@ -32,6 +32,8 @@ body {
   box-shadow: 0px 1px 5px 2px #111;
 }
 .navbar h1{
+  cursor: pointer;
+  width: 150px;
   color: #EAEAEA;
   position: relative;
   top: -5vh;

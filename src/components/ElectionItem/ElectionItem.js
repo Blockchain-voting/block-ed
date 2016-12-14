@@ -7,7 +7,7 @@ export default class ElectionItem extends Component {
   render() {
     return (
       <div className="election-card">
-        <h6>{this.props.name}</h6>
+        <h4>{this.props.name}</h4>
         <button onClick={(id) => this.props.handleVoteClick(this.props.id)}>Check Out</button>
       </div>
     );

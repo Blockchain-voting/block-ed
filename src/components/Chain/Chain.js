@@ -100,17 +100,22 @@ export default class Chain extends Component {
         key={ind}
         className="vote-button"
       >
-        {`${ind} '${choice}'`}
+        {`${ind + 1}: ${choice}`}
       </button>
     ))
     return (
       <div className="blockchain">
-        <h2>{this.state.eData.name}</h2>
-        <h4>Election Page</h4>
+        <div className="title-bar">
+          <h2>{this.state.eData.name}</h2>
+          <h4>Election Page</h4>
+        </div>
         <div className="choice-bar">
           <h5>Vote Options</h5>
           {options}
-          <button onClick={() => this.handleVoteFetch()}>Vote</button>
+          <button
+            id="vote-button"
+            onClick={() => this.handleVoteFetch()}
+          >Vote</button>
         </div>
         <div className="block-container">
           {blockCards}
