@@ -72,6 +72,8 @@ export default class Login extends Component {
         <div className="blurb">
           <p>
             This is a demo site to demonstrate the strengths of the blockchain. While the blockchain is a very secure system, THIS SITE IS NOT. Please use a simple password to login, as the user profile is still in development and not fully secure.
+            <br/>
+            This site is designed as an educational tour of how the blockchain works. The site will be updated regularly as I finish the blockchain implementation and various other improvements. Please check back soon!
           </p>
         </div>
       </div>

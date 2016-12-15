@@ -1,4 +1,3 @@
-
 export default class AjaxFunctions {
 
   static mapElections(eData) {

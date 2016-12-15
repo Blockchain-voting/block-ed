@@ -82,8 +82,8 @@ export default class Chain extends Component {
         let activeBlock = this.state.eData.active;
         let newVote = [r, vote.options]
         activeBlock.push(newVote)
-
         console.log(`new vote ${newVote[0]}, ${newVote[1]}`)
+        console.log(activeBlock);
         this.setState({
           eData: {
             active: activeBlock,

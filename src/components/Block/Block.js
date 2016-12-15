@@ -3,12 +3,10 @@ import AjaxFunctions from '../../helpers/AjaxFunctions';
 import './Block.css';
 
 export default class Block extends Component {
-  constructor(){
-    super();
-
-    this.state={
-      temp: ''
-    }
+  componentDidMount(){
+    this.props.hashes.map((hashVal, ind) => {
+      console.log(hashVal, ind);
+    })
   }
 
   render() {

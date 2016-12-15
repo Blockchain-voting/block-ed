@@ -12,17 +12,31 @@
   background-color: #F1F1F1;
   height: 100px;
   padding: 20px;
+  margin: 10px;
 }
 .choice-bar button{
   background-color: gold;
+  border: none;
+  box-shadow: 0px 1px 5px 0px #111;
+  border-radius: .2rem;
   margin: 5px;
 }
 #vote-button{
   background-color: dodgerblue;
-  padding: 20px;
+  border: none;
+  box-shadow: 0px 1px 5px 0px #111;
+  border-radius: .2rem;
+  padding: 5px 10px;
   font-size: 18px;
   margin: 5px 10px;
 }
+.choice-bar button:hover{
+  box-shadow: 0px 2px 5px 0px #111;
+}
+#vote-button:hover{
+  box-shadow: 0px 2px 5px 0px #111;
+}
+
 .block-container{
   /*background-color: dodgerblue;*/
   display: flex;
