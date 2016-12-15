@@ -1,9 +1,11 @@
 .block-card{
-  width: 300px;
-  height: 500px;
+  width: 350px;
+  height: 400px;
   margin: 20px;
-  background-color: forestgreen;
+  padding: 10px;
+  background-color: #DEDEDE;
   word-wrap: break-word;
+  box-shadow: 0px 1px 5px 0px #111;
 }
 .block-card p{
   margin: 0;

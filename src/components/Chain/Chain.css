@@ -1,18 +1,30 @@
 .title-bar{
-  background-color: gold;
+  font-size: 18px;
+  margin: 20px;
+}
+.title-bar h2{
+  font-size: 24px;
+}
+.title-bar h4{
+  font-size: 16px;
 }
 .choice-bar{
-  background-color: firebrick;
+  background-color: #F1F1F1;
   height: 100px;
+  padding: 20px;
 }
 .choice-bar button{
   background-color: gold;
+  margin: 5px;
 }
 #vote-button{
   background-color: dodgerblue;
+  padding: 20px;
+  font-size: 18px;
+  margin: 5px 10px;
 }
 .block-container{
-  background-color: dodgerblue;
+  /*background-color: dodgerblue;*/
   display: flex;
   justify-content: flex-start;
   flex-flow: row wrap;

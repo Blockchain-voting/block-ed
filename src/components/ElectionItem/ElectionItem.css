@@ -1,8 +1,8 @@
 .election-card{
   background-color: rgba(7,7,104,.7);
   margin: 5px;
-  width: 100px;
-  height: 150px;
+  width: 200px;
+  height: 250px;
   text-align: center;
 
   border-radius: .2rem;
@@ -14,5 +14,5 @@
 .election-card button{
   position: relative;
   border-radius: .5rem;
-  top: 50px;
+  top: 150px;
 }

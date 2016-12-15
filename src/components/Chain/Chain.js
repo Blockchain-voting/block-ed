@@ -75,12 +75,24 @@ export default class Chain extends Component {
       options: this.state.vote.options,
       userPublicKey: this.props.appState.user.publicKey
     }
-
     console.log(vote);
 
     AjaxFunctions.pyVote(vote)
       .then(r => {
-        console.log(`Vote Hash ${r}`)
+        let activeBlock = this.state.eData.active;
+        let newVote = [r, vote.options]
+        activeBlock.push(newVote)
+
+        console.log(`new vote ${newVote[0]}, ${newVote[1]}`)
+        this.setState({
+          eData: {
+            active: activeBlock,
+            chain: this.state.eData.chain,
+            id: this.state.eData.id,
+            name: this.state.eData.name,
+            option: this.state.eData.option
+          }
+        })
       })
       .catch(err => console.log(err))
   }
@@ -106,11 +118,11 @@ export default class Chain extends Component {
     return (
       <div className="blockchain">
         <div className="title-bar">
-          <h2>{this.state.eData.name}</h2>
-          <h4>Election Page</h4>
+          <h1>{this.state.eData.name}</h1>
+          <h2>Election Page</h2>
         </div>
         <div className="choice-bar">
-          <h5>Vote Options</h5>
+          <h2>Vote Options</h2>
           {options}
           <button
             id="vote-button"

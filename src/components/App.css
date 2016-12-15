@@ -24,8 +24,8 @@ body {
   background-color: rgba(7,7,104,.9);
 
   padding: 10px;
-  left: 88vw;
-  top: -12vh;
+  left: 90vw;
+  top: -80px;
   box-shadow: 0px 1px 5px 0px #111;
 }
 .navbar button:hover{
@@ -36,6 +36,6 @@ body {
   width: 150px;
   color: #EAEAEA;
   position: relative;
-  top: -5vh;
+  top: -20px;
   left: 1vw;
 }
