@@ -80,6 +80,9 @@ export default class Profile extends Component {
         <div className="election">
           <div className="new-elections">
             <h4>Create a new election</h4>
+            <p>
+              Enter a tile and the choices for your election, seperated by commas.
+            </p>
             <br/>
             <input
               type="search"
