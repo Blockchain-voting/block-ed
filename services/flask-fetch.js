@@ -1,14 +1,6 @@
 const fetch = require('node-fetch');
 
 module.exports = {
-  getHellor() {
-    return fetch('http://104.131.69.109:5000/hello', {
-      method: 'GET',
-      mode: 'cors',
-      dataType: 'json'
-    })
-    .then(r => r.json())
-  },
   pyVote(vote) {
     return fetch('http://104.131.69.109:5000/vote', {
       headers: {

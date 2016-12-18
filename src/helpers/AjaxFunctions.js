@@ -36,15 +36,8 @@ export default class AjaxFunctions {
     .then(r => r.json())
   }
 
-  static hello(username, password) {
-    return fetch('/block', {
-      method: 'GET'
-    })
-    .then(r => r.json())
-  }
-
   static pyVote(vote) {
-    return fetch('http://104.131.69.109:5000/vote', {
+    return fetch('/block/vote', {
       headers: {
         'Content-Type':'application/json'
       },
@@ -56,7 +49,7 @@ export default class AjaxFunctions {
   }
 
   static pyGetElect() {
-    return fetch('http://104.131.69.109:5000/elections', {
+    return fetch('/block/elections', {
       method: 'GET',
       mode: 'cors',
       dataType:'json'
@@ -65,8 +58,16 @@ export default class AjaxFunctions {
     // .then(eData => mapElections(eData))
   }
 
+  //use component to add vote option on a button click
+  //i.e. 1 input box (is component)
+  //when the user presses 'add option' button
+  //that option is stored in state and a new box is added
+  //have them be able to edit previous choices.
+  //i.e. save options, edit options, add option buttons
+  //so they can store them in state or add a new option
+
   static pyPostElect(elect) {
-    return fetch('http://104.131.69.109:5000/elections', {
+    return fetch('/block/elections', {
       headers: {
         'Content-Type':'application/json'
       },
@@ -79,7 +80,7 @@ export default class AjaxFunctions {
   }
 
   static getElectionData(id) {
-    return fetch(`http://104.131.69.109:5000/elections/${id}`, {
+    return fetch(`/block/elections/${id}`, {
       method: 'GET',
       mode: 'cors',
       dataType: 'json'
