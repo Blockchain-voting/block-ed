@@ -86,6 +86,7 @@ File Structure
 
 
 ##TODO
+- Rework Flask fetches to work on Heroku
 - Display live vote count
 - Vote live update
 - Vote hash and insertion display

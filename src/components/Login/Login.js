@@ -33,6 +33,11 @@ export default class Login extends Component {
     })
   }
 
+  handleHello() {
+    AjaxFunctions.hello()
+      .then(hello => console.log(hello))
+  }
+
   handleLogin(){
     let username = this.state.login.username;
     let password = this.state.login.password;
@@ -79,6 +84,7 @@ export default class Login extends Component {
             <br/>
             Not a facebook clone. I'm just bad with colors
           </p>
+          <button onClick={() => this.handleHello()}>Hello</button>
         </div>
       </div>
     );

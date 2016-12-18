@@ -16,6 +16,7 @@ app.use(bodyParser.json());
 
 app.use('/', require('./routes/index'))
 app.use('/user', require('./routes/user'))
+app.use('/block', require('./routes/flask-fetch'))
 
 
 app.listen(PORT, () => console.log('server here! listening on', PORT));

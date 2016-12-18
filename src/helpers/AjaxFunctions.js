@@ -36,6 +36,13 @@ export default class AjaxFunctions {
     .then(r => r.json())
   }
 
+  static hello(username, password) {
+    return fetch('/block', {
+      method: 'GET'
+    })
+    .then(r => r.json())
+  }
+
   static pyVote(vote) {
     return fetch('http://104.131.69.109:5000/vote', {
       headers: {
