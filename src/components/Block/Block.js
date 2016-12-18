@@ -4,9 +4,7 @@ import './Block.css';
 
 export default class Block extends Component {
   componentDidMount(){
-    this.props.hashes.map((hashVal, ind) => {
-      console.log(hashVal, ind);
-    })
+    console.log(this.props.hashes);
   }
 
   render() {

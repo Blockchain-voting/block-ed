@@ -90,9 +90,10 @@ export default class Chain extends Component {
             chain: this.state.eData.chain,
             id: this.state.eData.id,
             name: this.state.eData.name,
-            option: this.state.eData.option
+            options: this.state.eData.options
           }
         })
+        console.log(this.state.eData);
       })
       .catch(err => console.log(err))
   }
