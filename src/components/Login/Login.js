@@ -11,42 +11,85 @@ export default class Login extends Component {
       login: {
         username: '',
         password: ''
-      }
+      },
+      signup: {
+        username: '',
+        password: ''
+      },
+      showSignup: false,
+      loginState: ''
     }
   }
 
   handleUsernameUpdate(e, str){
-    this.setState({
-      login: {
-        username: e.target.value,
-        password: this.state.login.password
-      }
-    })
+    if (str === 'log') {
+      this.setState({
+        login: {
+          username: e.target.value,
+          password: this.state.login.password
+        }
+      })
+    } else {
+      this.setState({
+        signup: {
+          username: e.target.value,
+          password: this.state.signup.password
+        }
+      })
+    }
   }
 
   handlePasswordUpdate(e, str){
+    if (str === 'log') {
+      this.setState({
+        login: {
+          username: this.state.login.username,
+          password: e.target.value
+        }
+      })
+    } else {
+      this.setState({
+        signup: {
+          username: this.state.signup.username,
+          password: e.target.value
+        }
+      })
+    }
+  }
+
+  toggleSignup() {
     this.setState({
-      login: {
-        username: this.state.login.username,
-        password: e.target.value
-      }
+      showSignup: !this.state.showSignup
     })
+  }
+
+  handleSignup(){
+    let username = this.state.signup.username;
+    let password = this.state.signup.password;
+
+    AjaxFunctions.signup(username,password)
+      .then(user => {
+        this.toggleSignup()
+      })
+      .catch(err => console.log(err))
   }
 
   handleLogin(){
     let username = this.state.login.username;
     let password = this.state.login.password;
-    // console.log(username,password);
+    console.log(username,password);
 
     AjaxFunctions.login(username,password)
       .then((user) => {
-        // console.log('login:', user.password);
-        if (user.password != 'false') {
+        console.log('login user:', user.password);
+        if (user.password !== false) {
           // fire props function to change user state
-          // console.log('logging in');
+          console.log('logging in');
           this.props.updateUserState(user)
         } else {
-          console.log('bad login');
+          this.setState({
+            loginState: "Bad Login"
+          })
         }
       })
       .catch(err => console.log(err))
@@ -68,6 +111,22 @@ export default class Login extends Component {
             onChange={(e) => this.handlePasswordUpdate(e, 'log')}
           />
           <button onClick={() => this.handleLogin()}>Login</button>
+          <p className="loginResult">{this.state.loginState}</p>
+          <a onClick={() => this.toggleSignup()}>Sign Up</a>
+        </div>
+        <div className={this.state.showSignup ? "signup" : "signup hidden"}>
+          <h4>Signup</h4>
+          <input
+            type="search"
+            placeholder="username"
+            onChange={(e) => this.handleUsernameUpdate(e, 'sign')}
+          />
+          <input
+            type="password"
+            placeholder="password"
+            onChange={(e) => this.handlePasswordUpdate(e, 'sign')}
+          />
+          <button onClick={() => this.handleSignup()}>Sign Up</button>
         </div>
         <div className="blurb">
           <p>

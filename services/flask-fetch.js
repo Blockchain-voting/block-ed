@@ -2,6 +2,7 @@ const fetch = require('node-fetch');
 
 module.exports = {
   pyVote(vote) {
+    console.log(vote);
     return fetch('http://104.131.69.109:5000/vote', {
       headers: {
         'Content-Type':'application/json'
