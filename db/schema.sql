@@ -1,7 +1,7 @@
 BEGIN;
 
 -- deploying schema to heroku
--- `heroku pg:psql --app react-paint < db/schema.sql`
+-- `heroku pg:psql --app block-ed < db/schema.sql`
 
 DROP TABLE IF EXISTS users;
 

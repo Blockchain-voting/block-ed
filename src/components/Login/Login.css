@@ -23,7 +23,6 @@
 .blurb {
   text-shadow: 0px 1px 5px 0px #222;
   box-shadow: 0px 1px 5px 0px #111;
-  margin: 0 0 10px 10px;
   padding: 2px;
   width: 300px;
   height: 400px;
@@ -33,7 +32,7 @@ p {
   font-weight: 300;
   margin: 10px 5px;
 }
-.loginResult{
+.login-result{
   font-size: 18px;
   font-weight: normal;
   margin: 0;
@@ -46,6 +45,24 @@ p {
 .signup input{
   margin: 10px 5px;
   background-color: #FAFAFA;
+}
+.signup-link {
+  text-shadow: 0px 1px 5px 0px #222;
+  box-shadow: 0px 1px 3px 0px #111;
+  border-radius: .1rem;
+  border-style: none;
+  margin: 2px;
+  width: 70px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 400px;
+  background-color: #FAFAFA;
+  color: #222;
+  transition: 1s;
+}
+.signup-link:hover {
+  background-color: #EAEAEA;
+  color: #111;
 }
 .hidden {
   display: none;

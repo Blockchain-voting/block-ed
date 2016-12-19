@@ -110,9 +110,15 @@ export default class Login extends Component {
             placeholder="password"
             onChange={(e) => this.handlePasswordUpdate(e, 'log')}
           />
-          <button onClick={() => this.handleLogin()}>Login</button>
-          <p className="loginResult">{this.state.loginState}</p>
-          <a onClick={() => this.toggleSignup()}>Sign Up</a>
+          <button
+            onClick={() => this.handleLogin()}
+            className="signup-link"
+          >Login</button>
+          <button
+            onClick={() => this.toggleSignup()}
+            className="signup-link"
+          >Sign Up</button>
+          <p className="login-result">{this.state.loginState}</p>
         </div>
         <div className={this.state.showSignup ? "signup" : "signup hidden"}>
           <h4>Signup</h4>
@@ -127,6 +133,7 @@ export default class Login extends Component {
             onChange={(e) => this.handlePasswordUpdate(e, 'sign')}
           />
           <button onClick={() => this.handleSignup()}>Sign Up</button>
+          <p className="login-result">This can take a little bit to generate your key</p>
         </div>
         <div className="blurb">
           <p>
