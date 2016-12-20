@@ -58,14 +58,6 @@ export default class AjaxFunctions {
     // .then(eData => mapElections(eData))
   }
 
-  //use component to add vote option on a button click
-  //i.e. 1 input box (is component)
-  //when the user presses 'add option' button
-  //that option is stored in state and a new box is added
-  //have them be able to edit previous choices.
-  //i.e. save options, edit options, add option buttons
-  //so they can store them in state or add a new option
-
   static pyPostElect(elect) {
     return fetch('/block/elections', {
       headers: {

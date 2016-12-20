@@ -3,10 +3,6 @@ import AjaxFunctions from '../../helpers/AjaxFunctions';
 import './Block.css';
 
 export default class Block extends Component {
-  componentDidMount(){
-    console.log(this.props.hashes);
-  }
-
   render() {
     const hashes = this.props.hashes.map((hashVal, ind) => (
       <div

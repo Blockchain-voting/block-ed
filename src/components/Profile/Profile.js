@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import AjaxFunctions from '../../helpers/AjaxFunctions';
 import Election from '../Election/Election';
+import Option from '../Option/Option';
 import './Profile.css';
 
 export default class Profile extends Component {
@@ -39,6 +40,14 @@ export default class Profile extends Component {
     })
   }
 
+  //use component to add vote option on a button click
+  //i.e. 1 input box (is component)
+  //when the user presses 'add option' button
+  //that option is stored in state and a new box is added
+  //have them be able to edit previous choices.
+  //i.e. save options, edit options, add option buttons
+  //so they can store them in state or add a new option
+
   handleElectionUpdate(e) {
     this.setState({
       election: {
@@ -49,15 +58,19 @@ export default class Profile extends Component {
     })
   }
 
-  parseOptionStr() {
-    return this.state.optionStr.split(',');
+  handleAddOption() {
+    console.log('adding option');
+  }
+
+  handleRemoveOption() {
+    console.log('removing option');
   }
 
   electFetch() {
     let newElection = {
       name: this.state.election.name,
       id: this.state.election.id,
-      options: this.parseOptionStr()
+      options: this.state.optionStr.split(',')
     }
 
     AjaxFunctions.pyPostElect(newElection)
@@ -83,18 +96,18 @@ export default class Profile extends Component {
             <p>
               Enter a tile and the choices for your election, seperated by commas.
             </p>
+            <button onClick={() => this.electFetch()}>Create Election</button>
             <br/>
             <input
               type="search"
               placeholder="name"
               onChange={(e) => this.handleElectionUpdate(e)}
             />
-            <input
-              type="search"
-              placeholder="options"
-              onChange={(e) => this.handleOptionUpdate(e)}
+            <Option
+              handleOptionUpdate={(e) => this.handleOptionUpdate(e)}
+              handleAddOption={() => this.handleAddOption()}
+              handleRemoveOption={() => this.handleRemoveOption()}
             />
-            <button onClick={() => this.electFetch()}>Create Election</button>
           </div>
           <Election
             elections={this.state.elections}

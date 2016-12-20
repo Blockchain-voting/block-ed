@@ -44,7 +44,6 @@ export default class Chain extends Component {
   fetchElectionData(elId) {
     AjaxFunctions.getElectionData(elId)
       .then(data => {
-        console.log(data);
         this.setState({
           eData: {
             active: data.active,
@@ -59,7 +58,6 @@ export default class Chain extends Component {
   }
 
   handleVoteChange(id) {
-    console.log(id);
     this.setState({
       vote: {
         election: this.state.vote.election,
@@ -75,7 +73,6 @@ export default class Chain extends Component {
       options: this.state.vote.options,
       userPublicKey: this.props.appState.user.publicKey
     }
-    console.log(vote);
 
     AjaxFunctions.pyVote(vote)
       .then(r => {
@@ -98,7 +95,7 @@ export default class Chain extends Component {
   }
 
   render() {
-    const blockCards = this.state.eData.chain.map((votes, ind) => (
+    const blockCards = this.state.eData.chain.reverse().map((votes, ind) => (
       <Block
         key={ind}
         blockId={ind + 1}
@@ -106,7 +103,7 @@ export default class Chain extends Component {
         choices={this.state.eData.options}
       />
     ))
-    const options = this.state.eData.options.map((choice, ind) => (
+    const options = this.state.eData.options.reverse().map((choice, ind) => (
       <button
         onClick={(id) => this.handleVoteChange(ind)}
         key={ind}
