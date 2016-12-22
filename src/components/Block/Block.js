@@ -3,6 +3,25 @@ import AjaxFunctions from '../../helpers/AjaxFunctions';
 import './Block.css';
 
 export default class Block extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      prevBlock:'',
+      proofWork:''
+    }
+  }
+
+  componentDidMount(){
+    console.log(this.props.pointers);
+    if (this.props.pointers !== undefined) {
+      this.setState({
+        prevBlock: this.props.pointers[0],
+        proofWork: this.props.pointers[1]
+      })
+    }
+  }
+
   render() {
     const hashes = this.props.hashes.map((hashVal, ind) => (
       <div
@@ -16,7 +35,11 @@ export default class Block extends Component {
     ))
     return (
       <div className="block-card">
-        {`Block: ${this.props.blockId}`}
+        <span className="block-headers">
+          {`Block: ${this.props.blockId}`} <br/>
+          {`Proof of work: ${this.state.proofWork}`} <br/>
+          {`Previous block: ${this.state.prevBlock}`} <br/>
+        </span>
         {hashes}
       </div>
     );

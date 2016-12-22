@@ -18,7 +18,8 @@ export default class Chain extends Component {
         chain: [],
         id: 0,
         name: '',
-        options: []
+        options: [],
+        pointers: [],
       }
     }
   }
@@ -30,7 +31,8 @@ export default class Chain extends Component {
         chain: [],
         id: this.props.params.id,
         name: '',
-        options: []
+        options: [],
+        pointers: []
       },
       vote: {
         election: this.props.params.id,
@@ -50,9 +52,11 @@ export default class Chain extends Component {
             chain: data.chain,
             id: data.id,
             name: data.name,
-            options: data.options
+            options: data.options,
+            pointers: data.pointers
           }
         })
+        // console.log(this.state.eData.pointers);
       })
       .catch(err => console.log(err))
   }
@@ -87,7 +91,8 @@ export default class Chain extends Component {
             chain: this.state.eData.chain,
             id: this.state.eData.id,
             name: this.state.eData.name,
-            options: this.state.eData.options
+            options: this.state.eData.options,
+            pointers: this.state.eData.pointers
           }
         })
       })
@@ -95,15 +100,16 @@ export default class Chain extends Component {
   }
 
   render() {
-    const blockCards = this.state.eData.chain.reverse().map((votes, ind) => (
+    const blockCards = this.state.eData.chain.map((votes, ind) => (
       <Block
         key={ind}
         blockId={ind + 1}
         hashes={votes}
         choices={this.state.eData.options}
+        pointers={this.state.eData.pointers[ind]}
       />
     ))
-    const options = this.state.eData.options.reverse().map((choice, ind) => (
+    const options = this.state.eData.options.map((choice, ind) => (
       <button
         onClick={(id) => this.handleVoteChange(ind)}
         key={ind}
@@ -127,12 +133,13 @@ export default class Chain extends Component {
           >Vote</button>
         </div>
         <div className="block-container">
-          {blockCards}
           <Block
             blockId={'active'}
             hashes={this.state.eData.active}
             choices={this.state.eData.options}
+            pointers={this.state.eData.pointers[this.state.eData.pointers.length - 1]}
           />
+          {blockCards}
         </div>
       </div>
     );
