@@ -95,6 +95,13 @@ export default class Login extends Component {
       .catch(err => console.log(err))
   }
 
+  handleKeyPress(target){
+    if (target.charCode === 13) {
+      console.log('loggin in');
+      this.handleLogin()
+    }
+  }
+
   render() {
     return (
       <div className="landing-container">
@@ -103,11 +110,13 @@ export default class Login extends Component {
           <input
             type="search"
             placeholder="username"
+            onKeyPress={(t) => this.handleKeyPress(t)}
             onChange={(e) => this.handleUsernameUpdate(e, 'log')}
           />
           <input
             type="password"
             placeholder="password"
+            onKeyPress={(t) => this.handleKeyPress(t)}
             onChange={(e) => this.handlePasswordUpdate(e, 'log')}
           />
           <button
