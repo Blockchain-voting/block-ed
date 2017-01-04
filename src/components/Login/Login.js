@@ -77,7 +77,6 @@ export default class Login extends Component {
   handleLogin(){
     let username = this.state.login.username;
     let password = this.state.login.password;
-    console.log(username,password);
 
     AjaxFunctions.login(username,password)
       .then((user) => {
@@ -95,10 +94,17 @@ export default class Login extends Component {
       .catch(err => console.log(err))
   }
 
-  handleKeyPress(target){
-    if (target.charCode === 13) {
-      console.log('loggin in');
-      this.handleLogin()
+  handleKeyPress(target, str){
+    if (str === 'log') {
+      if (target.charCode === 13) {
+        console.log('loggin in');
+        this.handleLogin()
+      }
+    } else {
+      if (target.charCode === 13) {
+        console.log('Signing up');
+        this.handleSignup()
+      }
     }
   }
 
@@ -110,13 +116,13 @@ export default class Login extends Component {
           <input
             type="search"
             placeholder="username"
-            onKeyPress={(t) => this.handleKeyPress(t)}
+            onKeyPress={(t) => this.handleKeyPress(t, 'log')}
             onChange={(e) => this.handleUsernameUpdate(e, 'log')}
           />
           <input
             type="password"
             placeholder="password"
-            onKeyPress={(t) => this.handleKeyPress(t)}
+            onKeyPress={(t) => this.handleKeyPress(t, 'log')}
             onChange={(e) => this.handlePasswordUpdate(e, 'log')}
           />
           <button
@@ -134,11 +140,13 @@ export default class Login extends Component {
           <input
             type="search"
             placeholder="username"
+            onKeyPress={(t) => this.handleKeyPress(t, 'sign')}
             onChange={(e) => this.handleUsernameUpdate(e, 'sign')}
           />
           <input
             type="password"
             placeholder="password"
+            onKeyPress={(t) => this.handleKeyPress(t, 'sign')}
             onChange={(e) => this.handlePasswordUpdate(e, 'sign')}
           />
           <button onClick={() => this.handleSignup()}>Sign Up</button>

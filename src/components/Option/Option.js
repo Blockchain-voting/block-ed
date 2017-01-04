@@ -8,15 +8,14 @@ export default class Option extends Component {
       <div className="option-item">
         <input
           type="search"
-          placeholder="options"
+          placeholder="option"
           onChange={(e) => this.props.handleOptionUpdate(e)}
         />
         <button
-          onClick={() => this.props.handleAddOption()}
-        >Add Option</button>
-        <button
-          onClick={() => this.props.handleRemoveOption()}
-        >Remove Option</button>
+          onClick={(e) => this.props.handleRemoveOption(this.props.index)}
+        >
+          <img src={require('../../../assets/x.svg')}/>
+        </button>
       </div>
     );
   }

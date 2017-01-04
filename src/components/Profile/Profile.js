@@ -20,7 +20,15 @@ export default class Profile extends Component {
         election: 0,
         options: 1,
         user_signature: 'thisisasignedmessage'
-      }
+      },
+      numOptions: 0,
+      optionList: [
+        <Option
+          key={0}
+          index={0}
+          handleOptionUpdate={(e) => this.handleOptionUpdate(e)}
+          handleRemoveOption={(ind) => this.handleRemoveOption(ind)}
+        />]
     }
   }
 
@@ -59,11 +67,23 @@ export default class Profile extends Component {
   }
 
   handleAddOption() {
-    console.log('adding option');
+    this.setState({numOptions: this.state.numOptions += 1})
+    this.state.optionList.push(
+      <Option
+        key={this.state.numOptions}
+        index={this.state.numOptions}
+        handleOptionUpdate={(e) => this.handleOptionUpdate(e)}
+        handleRemoveOption={(ind) => this.handleRemoveOption(ind)}
+      />
+    )
+    this.forceUpdate()
   }
 
-  handleRemoveOption() {
-    console.log('removing option');
+  handleRemoveOption(ind) {
+    console.log('removing option', ind);
+    console.log('index of', this.state.optionList.indexOf(ind));
+    this.state.optionList.splice(ind, 1);
+    this.forceUpdate()
   }
 
   electFetch() {
@@ -97,17 +117,16 @@ export default class Profile extends Component {
               Enter a tile and the choices for your election, seperated by commas.
             </p>
             <button onClick={() => this.electFetch()}>Create Election</button>
+            <button
+              onClick={() => this.handleAddOption()}
+            >Add Option</button>
             <br/>
             <input
               type="search"
               placeholder="name"
               onChange={(e) => this.handleElectionUpdate(e)}
             />
-            <Option
-              handleOptionUpdate={(e) => this.handleOptionUpdate(e)}
-              handleAddOption={() => this.handleAddOption()}
-              handleRemoveOption={() => this.handleRemoveOption()}
-            />
+            {this.state.optionList}
           </div>
           <Election
             elections={this.state.elections}
