@@ -21,7 +21,6 @@ export default class Profile extends Component {
         options: 1,
         user_signature: 'thisisasignedmessage'
       },
-      numOptions: 0,
       optionList: [
         <Option
           key={0}
@@ -67,11 +66,10 @@ export default class Profile extends Component {
   }
 
   handleAddOption() {
-    this.setState({numOptions: this.state.numOptions += 1})
     this.state.optionList.push(
       <Option
-        key={this.state.numOptions}
-        index={this.state.numOptions}
+        key={this.state.optionList.length}
+        index={this.state.optionList.length}
         handleOptionUpdate={(e) => this.handleOptionUpdate(e)}
         handleRemoveOption={(ind) => this.handleRemoveOption(ind)}
       />
@@ -80,10 +78,23 @@ export default class Profile extends Component {
   }
 
   handleRemoveOption(ind) {
-    console.log('removing option', ind);
-    console.log('index of', this.state.optionList.indexOf(ind));
-    this.state.optionList.splice(ind, 1);
-    this.forceUpdate()
+    console.log('removing:', ind);
+    let tempList = this.state.optionList
+    console.log(tempList);
+    console.log(tempList.splice(ind, 1))
+    tempList.splice(ind, 1);
+    let newOptionList = tempList.map((option, ind) => {
+      return (
+        <Option
+          key={ind}
+          index={ind}
+          handleOptionUpdate={option.props.handleOptionUpdate}
+          handleRemoveOption={option.props.handleRemoveOption}
+        />)
+    })
+    this.setState({
+      optionList: newOptionList
+    })
   }
 
   electFetch() {

@@ -6,6 +6,7 @@ export default class Option extends Component {
   render() {
     return (
       <div className="option-item">
+        {this.props.index} - 
         <input
           type="search"
           placeholder="option"
