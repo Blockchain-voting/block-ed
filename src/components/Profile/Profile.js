@@ -81,7 +81,7 @@ export default class Profile extends Component {
     console.log('removing:', ind);
     let tempList = this.state.optionList
     console.log(tempList);
-    console.log(tempList.splice(ind, 1))
+    console.log(tempList.splice(ind, 1).props.index)
     tempList.splice(ind, 1);
     let newOptionList = tempList.map((option, ind) => {
       return (
