@@ -79,10 +79,13 @@ export default class Profile extends Component {
 
   handleRemoveOption(ind) {
     console.log('removing:', ind);
-    let tempList = this.state.optionList
-    console.log(tempList);
-    console.log(tempList.splice(ind, 1).props.index)
+    let tempList = this.state.optionList;
     tempList.splice(ind, 1);
+
+    tempList.forEach((item) => {
+      console.log(item);
+    })
+
     let newOptionList = tempList.map((option, ind) => {
       return (
         <Option
