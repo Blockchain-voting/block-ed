@@ -3,6 +3,12 @@ import AjaxFunctions from '../../helpers/AjaxFunctions';
 import Block from '../Block/Block';
 import './Chain.css';
 
+/* TODO list
+* 1 - add visible back button
+* 2 -
+* 3 -
+*/
+
 export default class Chain extends Component {
   constructor(){
     super();
@@ -98,6 +104,13 @@ export default class Chain extends Component {
       })
       .catch(err => console.log(err))
   }
+  handleCountFetch() {
+    AjaxFunctions.pyCount(this.state.eData.id)
+      .then(r => {
+        console.log(r);
+      })
+      .catch(err => console.log(err))
+  }
 
   render() {
     const blockCards = this.state.eData.chain.map((votes, ind) => (
@@ -131,6 +144,10 @@ export default class Chain extends Component {
             id="vote-button"
             onClick={() => this.handleVoteFetch()}
           >Vote</button>
+          <button
+            id="count-button"
+            onClick={() => this.handleCountFetch()}
+          >Count</button>
         </div>
         <div className="block-container">
           <Block

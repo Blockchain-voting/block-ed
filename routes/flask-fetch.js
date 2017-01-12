@@ -41,5 +41,15 @@ data.route('/vote')
       .catch(err => next(err))
   })
 
+data.route('/count/:id')
+  .get((req,res,next) => {
+    flaskFetch.pyCount(req.params.id)
+      .then(data => {
+        res.json(data)
+        next()
+      })
+      .catch(err => next(err))
+  })
+
 
 module.exports = data

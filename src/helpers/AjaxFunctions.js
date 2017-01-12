@@ -48,6 +48,15 @@ export default class AjaxFunctions {
     .then(r => r.json())
   }
 
+  static pyCount(id) {
+    return fetch(`/block/count/${id}`, {
+      method: 'GET',
+      mode: 'cors',
+      dataType: 'json'
+    })
+    .then(r => r.json())
+  }
+
   static pyGetElect() {
     return fetch('/block/elections', {
       method: 'GET',

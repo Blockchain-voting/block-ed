@@ -14,6 +14,15 @@ module.exports = {
     })
     .then(r => r.json())
   },
+  pyCount(id) {
+    return fetch(`http://localhost:5000/count/${id}`, {
+    // return fetch('http://104.131.69.109:5000/count', {
+      method: 'GET',
+      mode: 'cors',
+      dataType: 'json'
+    })
+    .then(r => r.json())
+  },
   pyGetElect() {
     return fetch('http://localhost:5000/elections', {
     // return fetch('http://104.131.69.109:5000/elections', {
