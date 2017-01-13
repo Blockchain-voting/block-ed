@@ -13,11 +13,10 @@ export default class Block extends Component {
   }
 
   componentDidMount(){
-    console.log(this.props.pointers);
     if (this.props.pointers !== undefined) {
       this.setState({
-        prevBlock: this.props.pointers[1],
-        proofWork: this.props.pointers[0]
+        prevBlock: this.props.pointers[0],
+        proofWork: this.props.pointers[1]
       })
     }
   }
