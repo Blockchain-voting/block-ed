@@ -16,7 +16,7 @@ module.exports = {
   },
   pyCount(id) {
     return fetch(`http://localhost:5000/count/${id}`, {
-    // return fetch('http://104.131.69.109:5000/count', {
+    // return fetch('http://104.131.69.109:5000/count/${id}', {
       method: 'GET',
       mode: 'cors',
       dataType: 'json'
