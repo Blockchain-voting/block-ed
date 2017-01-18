@@ -160,7 +160,7 @@ export default class Login extends Component {
             This site is designed as an educational tour of how the blockchain works. The site will be updated regularly as I finish the blockchain implementation and various other improvements. Please check back soon!
             <br/>
             <br/>
-            Not a facebook clone. I'm just bad with colors
+            This site is still in active development.
           </p>
         </div>
       </div>

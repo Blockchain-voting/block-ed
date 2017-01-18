@@ -32,7 +32,9 @@ export default class Chain extends Component {
         name: '',
         options: [],
         pointers: [],
-      }
+      },
+      voteStatus: "Valid",
+      voteCount: []
     }
   }
 
@@ -66,7 +68,10 @@ export default class Chain extends Component {
             name: data.name,
             options: data.options,
             pointers: data.pointers
-          }
+          },
+          voteCount: data.options.map((choice) => {
+            return 0
+          })
         })
         // console.log(this.state.eData.pointers);
       })
@@ -110,10 +115,33 @@ export default class Chain extends Component {
       })
       .catch(err => console.log(err))
   }
+
   handleCountFetch() {
     AjaxFunctions.pyCount(this.state.eData.id)
-      .then(r => {
-        console.log(r);
+      .then(count => {
+        console.log(count);
+        if (count.secure !== true) {
+          this.setState({
+            voteStatus: "invalid"
+          })
+        } else {
+          // loop through vote arrays
+          // insert into array for that vote
+          // display length of arrays
+          let voteArr = this.state.voteCount.map((choice) => {
+            return 0
+          })
+          count.votes.forEach((arr) => {
+            arr.forEach((vote) => {
+              voteArr[vote.choice] += 1
+            })
+          })
+          console.log(voteArr);
+          this.setState({
+            voteCount: voteArr
+          })
+        }
+
       })
       .catch(err => console.log(err))
   }
@@ -137,6 +165,11 @@ export default class Chain extends Component {
         {`${ind + 1}: ${choice}`}
       </button>
     ))
+    const optionCount = this.state.eData.options.map((choice, ind) => (
+      <h4 key={ind}>
+        {`${ind + 1}: ${choice} -> ${this.state.voteCount[ind]}`}
+      </h4>
+    ))
     return (
       <div className="blockchain">
         <div className="title-bar">
@@ -154,6 +187,10 @@ export default class Chain extends Component {
             id="count-button"
             onClick={() => this.handleCountFetch()}
           >Count</button>
+        </div>
+        <div className="result-container">
+          <h2>{this.state.voteStatus}</h2>
+          {optionCount}
         </div>
         <div className="block-container">
           <Block
