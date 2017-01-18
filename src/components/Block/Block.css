@@ -1,7 +1,7 @@
 .block-card{
-  width: 350px;
-  height: 400px;
-  margin: 20px;
+  width: 200px;
+  height: 380px;
+  margin: 25px 15px;
   padding: 10px;
   background-color: #DEDEDE;
   word-wrap: break-word;
@@ -15,5 +15,16 @@
   font-size: 12px;
 }
 .block-headers {
-  font-size: 8px;
+  position: relative;
+  top: -30px;
+  font-size: 10px;
+}
+.hash-block-container{
+  -webkit-column-count: 2;
+  column-count: 2;
+}
+.hash-block {
+  position: relative;
+  /*top: -4vh;*/
+  font-size: 10px;
 }

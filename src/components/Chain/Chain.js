@@ -6,7 +6,6 @@ import './Chain.css';
 /* TODO list
 * 2 - fix Signup/Login using same public key for everyone
 * 3 - implement loading symbol for signup
-* 4 - render vote count on page
 * 5 - on vote display the verification process
 * 6 - update styling on blocks
     - shorten hashes to be appreviated
@@ -33,7 +32,8 @@ export default class Chain extends Component {
         options: [],
         pointers: [],
       },
-      voteStatus: "Valid",
+      voteStatus: "not started",
+      electionStatus: "Valid",
       voteCount: []
     }
   }
@@ -122,7 +122,7 @@ export default class Chain extends Component {
         console.log(count);
         if (count.secure !== true) {
           this.setState({
-            voteStatus: "invalid"
+            electionStatus: "invalid"
           })
         } else {
           // loop through vote arrays
@@ -156,6 +156,7 @@ export default class Chain extends Component {
         pointers={this.state.eData.pointers[ind]}
       />
     ))
+    blockCards.reverse()
     const options = this.state.eData.options.map((choice, ind) => (
       <button
         onClick={(id) => this.handleVoteChange(ind)}
@@ -188,8 +189,14 @@ export default class Chain extends Component {
             onClick={() => this.handleCountFetch()}
           >Count</button>
         </div>
+        <div className="vote-container">
+          <h2>Vote Status - {this.state.voteStatus}</h2>
+          <h4>Encrypted with Public Key - smoke</h4>
+          <h4>Entered Into Chain - and</h4>
+          <h4>Verified - mirrors</h4>
+        </div>
         <div className="result-container">
-          <h2>{this.state.voteStatus}</h2>
+          <h2>Election Status - {this.state.electionStatus}</h2>
           {optionCount}
         </div>
         <div className="block-container">

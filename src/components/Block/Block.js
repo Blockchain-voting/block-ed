@@ -23,12 +23,10 @@ export default class Block extends Component {
 
   render() {
     const hashes = this.props.hashes.map((hashVal, ind) => (
-      <div
-        key={ind}
-      >
+      <div key={ind} className="hash-block">
         <p>
-          <span> Value: {this.props.choices[hashVal[1]]} <br/>Hash:</span>
-          {hashVal[0]}
+          <span> Vote for: {this.props.choices[hashVal[1]]} <br/>Hash:</span>
+          {hashVal[0].slice(0,24)}...
         </p>
       </div>
     ))
@@ -36,10 +34,12 @@ export default class Block extends Component {
       <div className="block-card">
         <span className="block-headers">
           {`Block: ${this.props.blockId}`} <br/>
-          {`Proof of work: ${this.state.proofWork}`} <br/>
-          {`Previous block: ${this.state.prevBlock}`} <br/>
+          {`Proof of work: ${this.state.proofWork.slice(0,32)}...`} <br/>
+          {`Previous block: ${this.state.prevBlock.slice(0,32)}...`} <br/>
         </span>
-        {hashes}
+        <div className="hash-block-container">
+          {hashes}
+        </div>
       </div>
     );
   }

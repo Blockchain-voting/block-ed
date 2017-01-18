@@ -21,6 +21,9 @@
   border-radius: .2rem;
   margin: 5px;
 }
+.choice-bar button:hover{
+  box-shadow: 0px 2px 5px 0px #111;
+}
 #vote-button{
   background-color: dodgerblue;
   border: none;
@@ -28,23 +31,53 @@
   border-radius: .2rem;
   padding: 5px 10px;
   font-size: 18px;
-  margin: 5px 10px;
-}
-.choice-bar button:hover{
-  box-shadow: 0px 2px 5px 0px #111;
+  margin: 5px 7px;
 }
 #vote-button:hover{
   box-shadow: 0px 2px 5px 0px #111;
 }
-.result-container{
-  background-color: firebrick;
-  color: dodgerblue;
-  font-weight: 600;
+#count-button{
+  background-color: dodgerblue;
+  border: none;
+  box-shadow: 0px 1px 5px 0px #111;
+  border-radius: .2rem;
+  padding: 5px 10px;
+  font-size: 18px;
+  margin: 5px 0px;
+}
+#count-button:hover{
+  box-shadow: 0px 2px 5px 0px #111;
+}
+.vote-container{
+  background-color: #FAFAFA;
+  color: #222;
+  border: 2px solid #222;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.75);
+  font-weight: 400;
   position: absolute;
-  width: 400px;
+  width: 300px;
   height: 200px;
   top: 20vh;
-  left: 40vw;
+  left: 37vw;
+}
+.vote-container h2{
+  margin-top: -2px;
+  margin-left: 2px;
+}
+.vote-container h4{
+  margin-left: 5px;
+}
+.result-container{
+  background-color: #FAFAFA;
+  color: #222;
+  border: 2px solid #222;
+  box-shadow: 0px 1px 2px 1px rgba(0,0,0,0.75);
+  font-weight: 400;
+  position: absolute;
+  width: 300px;
+  height: 200px;
+  top: 20vh;
+  left: 68vw;
 }
 .result-container h2{
   margin-top: -2px;
