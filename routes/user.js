@@ -1,5 +1,6 @@
 const user = require('express').Router();
 const bcrypt = require('bcryptjs');
+const cryptico = require('cryptico');
 const keys = require('../lib/keyGenerate');
 const db = require('../models/user');
 
@@ -19,6 +20,13 @@ user.route('/signup')
   // pass that to db.createUser
   .post(keys.generateKeys ,db.createUser, (req,res) => {
     res.json({keys:true})
+  })
+
+user.route('/sign')
+  .post((req,res) => {
+    // do signature stuff
+    let signature = cryptico.encrypt(req.body.voteStr, req.body.publicKey)
+    res.json(signature)
   })
 
 

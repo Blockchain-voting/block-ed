@@ -36,7 +36,9 @@ export default class Chain extends Component {
       electionStatus: "Valid",
       voteCount: [],
       userPubKey: '',
-      voteHash: ''
+      voteHash: '',
+      cipher: '',
+      voteVerified: ''
     }
   }
 
@@ -91,10 +93,19 @@ export default class Chain extends Component {
   }
 
   handleVoteFetch() {
+    AjaxFunctions.signVote(this.props.appState.user.publicKey, this.state.eData.options[this.state.vote.options])
+      .then(resp => {
+        this.enterVote(resp.cipher)
+      })
+      .catch(err => console.log(err))
+
+  }
+
+  enterVote(cipher){
     let vote = {
-      election: this.state.vote.election,
-      options: this.state.vote.options,
-      userPublicKey: this.props.appState.user.publicKey
+        election: this.state.vote.election,
+        options: this.state.vote.options,
+        signature: cipher
     }
 
     AjaxFunctions.pyVote(vote)
@@ -113,8 +124,9 @@ export default class Chain extends Component {
             options: this.state.eData.options,
             pointers: this.state.eData.pointers
           },
-          userPubKey: `${this.props.appState.user.publicKey.slice(0,24)}...`,
-          voteHash: `${r.slice(0,32)}...`
+          userPubKey: `${this.props.appState.user.publicKey.slice(30,54)}...`,
+          voteHash: `${r.slice(0,32)}...`,
+          voteVerified: 'n/a'
         })
       })
       .catch(err => console.log(err))
@@ -194,9 +206,9 @@ export default class Chain extends Component {
         </div>
         <div className="vote-container">
           <h2>Vote Status - {this.state.voteStatus}</h2>
-          <h4>Encrypted with Public Key - {this.state.userPubKey}</h4>
-          <h4>Entered Into Chain - {this.state.voteHash}</h4>
-          <h4>Verified - checkmark</h4>
+          <h4>Transaction Signature - {this.state.userPubKey}</h4>
+          <h4>Hash in the Chain - {this.state.voteHash}</h4>
+          <h4>Verified - {this.state.voteVerified}</h4>
         </div>
         <div className="result-container">
           <h2>Election Status - {this.state.electionStatus}</h2>

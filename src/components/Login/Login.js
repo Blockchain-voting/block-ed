@@ -80,10 +80,8 @@ export default class Login extends Component {
 
     AjaxFunctions.login(username,password)
       .then((user) => {
-        console.log('login user:', user.password);
         if (user.password !== false) {
           // fire props function to change user state
-          console.log('logging in');
           this.props.updateUserState(user)
         } else {
           this.setState({
@@ -97,12 +95,10 @@ export default class Login extends Component {
   handleKeyPress(target, str){
     if (str === 'log') {
       if (target.charCode === 13) {
-        console.log('loggin in');
         this.handleLogin()
       }
     } else {
       if (target.charCode === 13) {
-        console.log('Signing up');
         this.handleSignup()
       }
     }

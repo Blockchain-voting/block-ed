@@ -36,6 +36,20 @@ export default class AjaxFunctions {
     .then(r => r.json())
   }
 
+  static signVote(publicKey, voteStr) {
+    return fetch('/user/sign', {
+      headers: {
+        'Content-Type':'application/json'
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        publicKey,
+        voteStr
+      }),
+    })
+    .then(r => r.json())
+  }
+
   static pyVote(vote) {
     return fetch('/block/vote', {
       headers: {
