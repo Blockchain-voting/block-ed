@@ -33,6 +33,18 @@ export default class App extends Component {
     browserHistory.push('/profile');
   }
 
+  logout() {
+    this.setState({
+      user: {
+        username: '',
+        password: '',
+        privateKey: '',
+        publicKey: '',
+      }
+    }),
+    browserHistory.push('/');
+  }
+
   handleVoteClick(id) {
     console.log('Showing blockchain for election', id);
     browserHistory.push(`/blockchain/${id}`)
@@ -42,14 +54,10 @@ export default class App extends Component {
     return (
       <div>
         <div className="navbar">
-          <h1
-            onClick={() => this.redirectToProfilePage()}
-          >
-            Block -Ed
+          <h1 onClick={() => this.redirectToProfilePage()}>
+            Block-Ed
           </h1>
-          <button
-            onClick={() => this.logout()}
-          >
+          <button onClick={() => this.logout()}>
             Logout
           </button>
         </div>

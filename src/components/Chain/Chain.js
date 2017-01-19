@@ -34,7 +34,9 @@ export default class Chain extends Component {
       },
       voteStatus: "not started",
       electionStatus: "Valid",
-      voteCount: []
+      voteCount: [],
+      userPubKey: '',
+      voteHash: ''
     }
   }
 
@@ -110,7 +112,9 @@ export default class Chain extends Component {
             name: this.state.eData.name,
             options: this.state.eData.options,
             pointers: this.state.eData.pointers
-          }
+          },
+          userPubKey: `${this.props.appState.user.publicKey.slice(0,24)}...`,
+          voteHash: `${r.slice(0,32)}...`
         })
       })
       .catch(err => console.log(err))
@@ -136,7 +140,6 @@ export default class Chain extends Component {
               voteArr[vote.choice] += 1
             })
           })
-          console.log(voteArr);
           this.setState({
             voteCount: voteArr
           })
@@ -191,9 +194,9 @@ export default class Chain extends Component {
         </div>
         <div className="vote-container">
           <h2>Vote Status - {this.state.voteStatus}</h2>
-          <h4>Encrypted with Public Key - smoke</h4>
-          <h4>Entered Into Chain - and</h4>
-          <h4>Verified - mirrors</h4>
+          <h4>Encrypted with Public Key - {this.state.userPubKey}</h4>
+          <h4>Entered Into Chain - {this.state.voteHash}</h4>
+          <h4>Verified - checkmark</h4>
         </div>
         <div className="result-container">
           <h2>Election Status - {this.state.electionStatus}</h2>
