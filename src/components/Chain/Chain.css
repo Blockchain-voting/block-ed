@@ -9,13 +9,13 @@
   font-size: 16px;
 }
 .choice-bar{
-  background-color: #F1F1F1;
+  /*background-color: #F1F1F1;*/
   height: 100px;
   padding: 20px;
   margin: 10px;
 }
 .choice-bar button{
-  background-color: gold;
+  background-color: #DD2233;
   border: none;
   box-shadow: 0px 1px 5px 0px #111;
   border-radius: .2rem;

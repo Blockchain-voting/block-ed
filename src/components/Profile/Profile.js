@@ -25,6 +25,7 @@ export default class Profile extends Component {
         <Option
           key={0}
           index={0}
+          startStr={''}
           handleOptionUpdate={(e) => this.handleOptionUpdate(e)}
           handleRemoveOption={(ind) => this.handleRemoveOption(ind)}
         />]
@@ -39,12 +40,6 @@ export default class Profile extends Component {
         })
       })
       .catch(err => console.log(err))
-  }
-
-  handleOptionUpdate(e) {
-    this.setState({
-      optionStr: e.target.value
-    })
   }
 
   //use component to add vote option on a button click
@@ -65,6 +60,12 @@ export default class Profile extends Component {
     })
   }
 
+  handleOptionUpdate(e) {
+    this.setState({
+      optionStr: e.target.value
+    })
+  }
+
   handleAddOption() {
     this.state.optionList.push(
       <Option
@@ -79,11 +80,11 @@ export default class Profile extends Component {
 
   handleRemoveOption(ind) {
     console.log('removing:', ind);
-    let tempList = this.state.optionList;
+    let tempList = this.state.optionList.slice();
     tempList.splice(ind, 1);
 
     tempList.forEach((item) => {
-      console.log(item);
+      console.log(item.props);
     })
 
     let newOptionList = tempList.map((option, ind) => {
@@ -91,7 +92,7 @@ export default class Profile extends Component {
         <Option
           key={ind}
           index={ind}
-          handleOptionUpdate={option.props.handleOptionUpdate}
+          handleOptionUpdate={(e) => this.handleOptionUpdate(e)}
           handleRemoveOption={option.props.handleRemoveOption}
         />)
     })
@@ -128,12 +129,10 @@ export default class Profile extends Component {
           <div className="new-elections">
             <h4>Create a new election</h4>
             <p>
-              Enter a tile and the choices for your election, seperated by commas.
+              Enter a title and the choices for your election (seperated by commas).
             </p>
             <button onClick={() => this.electFetch()}>Create Election</button>
-            <button
-              onClick={() => this.handleAddOption()}
-            >Add Option</button>
+            <button onClick={() => this.handleAddOption()}>Add Option</button>
             <br/>
             <input
               type="search"
