@@ -195,14 +195,16 @@ export default class Chain extends Component {
         <div className="choice-bar">
           <h2>Vote Options</h2>
           {options}
-          <button
-            id="vote-button"
-            onClick={() => this.handleVoteFetch()}
-          >Vote</button>
-          <button
-            id="count-button"
-            onClick={() => this.handleCountFetch()}
-          >Count</button>
+          <div className='interact-buttons'>
+            <button
+              id="vote-button"
+              onClick={() => this.handleVoteFetch()}
+            >Vote</button>
+            <button
+              id="count-button"
+              onClick={() => this.handleCountFetch()}
+            >Count</button>
+          </div>
         </div>
         <div className="vote-container">
           <h2>Vote Status - {this.state.voteStatus}</h2>

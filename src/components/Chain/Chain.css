@@ -24,6 +24,9 @@
 .choice-bar button:hover{
   box-shadow: 0px 2px 5px 0px #111;
 }
+.interact-buttons{
+  /*background-color: forestgreen; */
+}
 #vote-button{
   background-color: dodgerblue;
   border: none;
