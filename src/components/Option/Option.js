@@ -20,15 +20,15 @@ export default class Option extends Component {
   render() {
     return (
       <div className="option-item">
-        {this.props.index} -
+        {/* {this.props.index} - */}
         <input
           type="search"
-          placeholder="option"
+          placeholder="options"
           onChange={(e) => this.props.handleOptionUpdate(e)}
         />
-        <button onClick={(e) => this.props.handleRemoveOption(this.props.index)}>
+        {/* <button onClick={(e) => this.props.handleRemoveOption(this.props.index)}>
           <img src={require('../../../assets/x.svg')}/>
-        </button>
+        </button> */}
       </div>
     );
   }

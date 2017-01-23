@@ -132,7 +132,7 @@ export default class Profile extends Component {
               Enter a title and the choices for your election (seperated by commas).
             </p>
             <button onClick={() => this.electFetch()}>Create Election</button>
-            <button onClick={() => this.handleAddOption()}>Add Option</button>
+            {/* <button onClick={() => this.handleAddOption()}>Add Option</button> */}
             <br/>
             <input
               type="search"
