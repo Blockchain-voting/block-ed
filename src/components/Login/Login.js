@@ -150,6 +150,11 @@ export default class Login extends Component {
         </div>
         <div className="blurb">
           <p>
+            There is a test acount with <br/>
+            username: test <br/>
+            password: test
+            <br/>
+            <br/>
             This is a demo site to demonstrate the strengths of the blockchain. While the blockchain is a very secure system, THIS SITE IS NOT. Please use a simple password to login.
             <br/>
             <br/>
