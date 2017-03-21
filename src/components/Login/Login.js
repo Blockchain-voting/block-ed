@@ -150,7 +150,7 @@ export default class Login extends Component {
         </div>
         <div className="blurb">
           <p>
-            There is a test acount with <br/>
+            Please use the test acount with <br/>
             username: test <br/>
             password: test
             <br/>
